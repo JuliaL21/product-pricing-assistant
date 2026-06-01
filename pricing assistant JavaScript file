@@ -11,8 +11,11 @@ const fixedMonthlyCosts = 500;
 const discountedPrice = basePrice * (1 - discountRate);
 const finalPriceWithTax = discountedPrice * (1 + salesTaxRate);
 const profitPerUnit = finalPriceWithTax - costPerUnit;
-const breakEvenUnits = Math.ceil(fixedMonthlyCosts / profitPerUnit);
 const isProfitablePerUnit = profitPerUnit > 0;
+
+const breakEvenUnits = isProfitablePerUnit
+  ? Math.ceil(fixedMonthlyCosts / profitPerUnit)
+  : "Not profitable per unit";
 
 console.log("Product Pricing Assistant");
 console.log("-------------------------");
